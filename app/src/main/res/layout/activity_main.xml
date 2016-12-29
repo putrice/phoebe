@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    style="@style/MatchParent">
+
+    <RelativeLayout style="@style/MatchParent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/WrapContent"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin_medium" />
+
+        <RelativeLayout
+            android:id="@+id/camera_layout"
+            style="@style/MatchParent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <com.putri.phoebe.presentation.components.CameraComponentPreview
+                android:id="@+id/preview"
+                style="@style/MatchParent" />
+
+            <com.putri.phoebe.presentation.components.GraphicOverlay
+                android:id="@+id/faceOverlay"
+                style="@style/MatchParent" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            style="@style/WrapContent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_pick_an_image"
+                style="@style/WrapContent"
+                android:text="@string/pick_an_image" />
+
+            <Button
+                android:id="@+id/btn_open_camera"
+                style="@style/WrapContent"
+                android:text="@string/open_camera" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

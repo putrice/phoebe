@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/putri/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.2.3/7fe1a94c1aeb958acc876fe616922cc191f3222c/rxjava-1.2.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7fe1a94c1aeb958acc876fe616922cc191f3222c">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/rxjava-1.2.3_ffba23f624679ca56f338b0eb9973534c4f2290c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5a2386ad9bfff580b206a7fe305cdccd00798159">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/io.reactivex-rxandroid-1.2.1_4a7d06bc360bf7afcbb1e51417d8524afbb73c71/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_6849a5cd5c4b09f8ec0a719660f17d1a91ec2535/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-7.8.0_46409c1600d9236333b6fcf2345291eb393c6d9d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_e18e25128a82d6d4f1c1299b4865ab19d3499e12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-7.8.0_3abc2f131eb61ddc860b0d211d3334ad3da983e4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.inject-1_e13dfb7fe3ce113bd6073339f86d72a5c72fd3f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-panorama-7.8.0_7b47e9c0e194fb153bff2696bb4beb073d4c3c57/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_5b4db17a2d6de485c880b04d4c8b1e4a6d963af8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7f0f9307620d07e18f27d9b3f5054ec09f602829">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f358b2c36430a299409f2bf7a37d60c33fcd7c6f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-7.8.0_39af6b551397c29fba74b023dfb928a24f2cf4a2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_ee55872ce8e071169526e8889e1783baf085f7ac/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-7.8.0_cb9c4c289d4813583b9574d456502a36e4cf6476/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jakewharton-butterknife-8.4.0_7ca195243c73842beb672325db87086d86ffe50b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-7.8.0_8b2c17f495b619a7834c2cf269011712df838f29/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_0bff5a0903dc1fad55d67ceac975921ed04c1ff3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_ef24938af36d9888b4c49087f371706e3c004490/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-identity-7.8.0_075af2917268f641f17bc3151057a7057594eac0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-7.8.0_ef8946b0c5469bb39a88a8630f403f2d62dd0027/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-22.2.0_4f11961bd754aba3630a4380a0c34bba4969ceeb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_d8402ea532bd81826fc4ac25362d70007e2eb15a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appstate-7.8.0_b94e76665868ded59966a784ffc067ee72f2e344/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appindexing-7.8.0_9d54c797eff949ee74fc3d05213eedeae6471c9a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-7.8.0_ece588662a7be8dd938667c498b52b044b4298de/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_021a6c441a295a500684e5096eae16729435fa7e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_69de311f9971e847265e5f5b36118691ec091b34/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.4.0/ea392375cf9ff59234a82e7928a204215ccc98cd/butterknife-annotations-8.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.4.0_ba7a87eed569409a322a9019df6bc8110a002232/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-7.8.0_ad66e0b8a7b48f107a3832ade19e8687441adb9b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_5a696f5470e8d78e8e91da30763a5158e7a5b5c8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-plus-7.8.0_02aa38e838193a6122d10769357291fea85d051f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-7.8.0_4668f29f997a26e98ea578f16868608f65622527/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-drive-7.8.0_5e9bc65d1b079e9185c57bc3ddb8fb5ea3f3a1b0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.4/6b290a792253035c9fcc912d6a4d7efb3e850211/dagger-2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6b290a792253035c9fcc912d6a4d7efb3e850211">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/dagger-2.4_c84696d2f84e71c428e114c80c279f6bf75dff42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4b9899c63fa7de22e120cff4b0facaa695763ab7">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_564c8369c9e315e34d88f767cdea5c8d0b7e45ff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-7.8.0_07fc7d6f54a005922abddd24e6beecc762ff52a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.tzutalin.dlib-android-app/dlib/1.0.3/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5d20b1abd633fed36efb76d45eaaffa41a65aa1a">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.tzutalin.dlib-android-app-dlib-1.0.3_c3e3a4139a07b0e33a37d930b368dad8ef220b3e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_332c2d52ae676e57322fb52ec1fbd4f7d9fefa7e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.karumi/dexter/2.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="3f8fe3c5035c003058846d644d98ca399d405e5e">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.karumi-dexter-2.3.1_88752a23d0b945d95a61306ab1d705fa1a5110ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_a78ff3e0bac1bd5633fd4e299d7aada7fa867194/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/.gradle/caches/modules-2/files-2.1/com.jakewharton.hugo/hugo-annotations/1.2.1/b01150795c5cdca1eb7e501bf00f105ff0e31501/hugo-annotations-1.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b01150795c5cdca1eb7e501bf00f105ff0e31501">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/hugo-annotations-1.2.1_32b86939e2afd0f759fa10f38068fb78b5e3e9ed/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_9a9dc517e9ff43e52133d15194bcd784cdc7959e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-7.8.0_27a3900d3c7f621d6b67e7dd348f77a244e4906c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-mediarouter-v7-22.2.0_4005e21f37dbe47f33b94af48471b3fd584ba482/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.2.1_44c9240ea101a3dd81db49b84a788c7a86289d1f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2e24e5f1b11170163028277de63f709e42525db4">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-games-7.8.0_52b1395dae1e312a634fa5272725761ff2ec8535/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_76851ea7e061f8e79f78c682a87a0f20dfda80a0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_ce2192bc8c33fbd9bce2a4f71b0c5b101759272f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wallet-7.8.0_7875ab5bbdc145a007b2bdba4eb64a4d02306cf9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.2.1_766bbbe48c290f209697cd4de1ca01ee3c4d3834/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-7.8.0_be4407598915c6e59a6b8f830216473befb533e9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-7.8.0_e6017aba63752f5462deee9ef5c04aeb03b13152/classes.dex" />
+    </item>
+
+</items>
