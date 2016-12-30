@@ -25,6 +25,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -91,9 +92,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_open_camera)
     Button btnOpenCamera;
 
-    @BindView(R.id.camera_layout)
-    RelativeLayout cameraLayout;
-
     @BindView(R.id.preview)
     CameraComponentPreview cameraComponentPreview;
 
@@ -110,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         imgView.setVisibility(View.GONE);
-        cameraLayout.setVisibility(View.GONE);
+        cameraComponentPreview.setVisibility(View.GONE);
 
         initPermissionListeners();
 
@@ -227,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(isOpenCamera) {
             startCameraSource();
-            cameraLayout.setVisibility(View.VISIBLE);
+            cameraComponentPreview.setVisibility(View.VISIBLE);
         }
     }
 
@@ -237,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(isOpenCamera) {
             cameraComponentPreview.stop();
-            cameraLayout.setVisibility(View.GONE);
+            cameraComponentPreview.setVisibility(View.GONE);
         }
     }
 
@@ -262,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         imgView.setVisibility(View.VISIBLE);
-        cameraLayout.setVisibility(View.GONE);
+        cameraComponentPreview.setVisibility(View.GONE);
         Dexter.checkPermission(new PermissionListener() {
             @Override public void onPermissionGranted(PermissionGrantedResponse response) {
                 if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK

@@ -44,13 +44,13 @@ public class CameraComponentPreview extends ViewGroup {
     }
 
     public void start(CameraSource cameraSource) throws IOException {
-        if(cameraSource == null) {
+        if (cameraSource == null) {
             stop();
         }
 
         this.cameraSource = cameraSource;
 
-        if(this.cameraSource != null) {
+        if (this.cameraSource != null) {
             isStartRequested = true;
             startIfReady();
         }
@@ -62,13 +62,13 @@ public class CameraComponentPreview extends ViewGroup {
     }
 
     public void stop() {
-        if(cameraSource != null) {
+        if (cameraSource != null) {
             cameraSource.stop();
         }
     }
 
     public void release() {
-        if(cameraSource != null) {
+        if (cameraSource != null) {
             cameraSource.release();
             cameraSource = null;
         }
@@ -76,13 +76,13 @@ public class CameraComponentPreview extends ViewGroup {
 
     private void startIfReady() throws IOException {
 
-        if(isStartRequested && isSurfaceAvailable) {
+        if (isStartRequested && isSurfaceAvailable) {
             cameraSource.start(surfaceView.getHolder());
-            if(graphicOverlay != null) {
+            if (graphicOverlay != null) {
                 Size size = cameraSource.getPreviewSize();
                 int min = Math.min(size.getWidth(), size.getHeight());
                 int max = Math.max(size.getWidth(), size.getHeight());
-                if(isPortraitMode()) {
+                if (isPortraitMode()) {
                     graphicOverlay.setCameraInfo(min, max, cameraSource.getCameraFacing());
                 } else {
                     graphicOverlay.setCameraInfo(max, min, cameraSource.getCameraFacing());
@@ -98,15 +98,15 @@ public class CameraComponentPreview extends ViewGroup {
         int width = 320;
         int height = 240;
 
-        if(cameraSource != null) {
+        if (cameraSource != null) {
             Size size = cameraSource.getPreviewSize();
-            if(size != null) {
+            if (size != null) {
                 width = size.getWidth();
                 height = size.getHeight();
             }
         }
 
-        if(isPortraitMode()) {
+        if (isPortraitMode()) {
             int tmp = width;
             width = height;
             height = tmp;
@@ -115,16 +115,25 @@ public class CameraComponentPreview extends ViewGroup {
         final int layoutWidth = r - l;
         final int layoutHeight = b - t;
 
-        int childWidth = layoutWidth;
-        int childHeight = (int)(((float) layoutWidth / (float) width) * height);
+        int childWidth;
+        int childHeight;
+        int childXOffset = 0;
+        int childYOffset = 0;
+        float widthRatio = (float) layoutWidth / (float) width;
+        float heightRatio = (float) layoutHeight / (float) height;
 
-//        if(childHeight > layoutHeight) {
-//            childHeight = layoutHeight;
-//            childWidth = (int)(((float) layoutHeight / (float) height) * width);
-//        }
+        if (widthRatio > heightRatio) {
+            childWidth = layoutWidth;
+            childHeight = (int) ((float) height * widthRatio);
+            childYOffset = (childHeight - layoutHeight) / 2;
+        } else {
+            childWidth = (int) ((float) width * heightRatio);
+            childHeight = layoutHeight;
+            childXOffset = (childWidth - layoutWidth) / 2;
+        }
 
-        for(int i = 0; i < getChildCount(); i++) {
-            getChildAt(i).layout(0, 0, childWidth, childHeight);
+        for (int i = 0; i < getChildCount(); i++) {
+            getChildAt(i).layout(-1 * childXOffset, -1 * childYOffset, childWidth - childXOffset, childHeight - childYOffset);
         }
 
         try {
@@ -136,11 +145,11 @@ public class CameraComponentPreview extends ViewGroup {
 
     private boolean isPortraitMode() {
         int orientation = context.getResources().getConfiguration().orientation;
-        if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             return false;
         }
 
-        if(orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             return true;
         }
 
@@ -167,6 +176,7 @@ public class CameraComponentPreview extends ViewGroup {
         }
 
         @Override
-        public void surfaceDestroyed(SurfaceHolder holder) {}
+        public void surfaceDestroyed(SurfaceHolder holder) {
+        }
     }
 }
