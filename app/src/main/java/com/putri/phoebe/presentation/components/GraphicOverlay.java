@@ -64,6 +64,13 @@ public class GraphicOverlay extends View {
         postInvalidate();
     }
 
+    public void setFacing(int facing) {
+        synchronized (lock) {
+            this.facing = facing;
+        }
+        postInvalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -113,8 +120,8 @@ public class GraphicOverlay extends View {
             graphicOverlay.postInvalidate();
         }
 
-        public GraphicOverlay getGraphicOverlay() {
-            return graphicOverlay;
+        public int getFacing() {
+            return graphicOverlay.facing;
         }
     }
 }

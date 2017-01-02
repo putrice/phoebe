@@ -57,6 +57,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.github.lzyzsd/circleprogress/1.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e6f9fb0d2ea982d656d6dca785a9097659395874">
+        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.lzyzsd-circleprogress-1.1.0_883e8e0ec722d3d930a4c9a452b6a07b0fdefe20/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/putri/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
         jumboMode="true"
         optimize="true"
@@ -88,7 +97,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="7f0f9307620d07e18f27d9b3f5054ec09f602829">
+        sha1="a035d19c288a3a99465921f9987861041806c144">
         <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f358b2c36430a299409f2bf7a37d60c33fcd7c6f/classes.dex" />
     </item>
     <item
@@ -304,7 +313,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="4b9899c63fa7de22e120cff4b0facaa695763ab7">
+        sha1="419b99bd8365481caa7d3cba3a6ccfbc99039dc3">
         <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_564c8369c9e315e34d88f767cdea5c8d0b7e45ff/classes.dex" />
     </item>
     <item
@@ -315,15 +324,6 @@
         revision="24.0.3"
         sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
         <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-7.8.0_07fc7d6f54a005922abddd24e6beecc762ff52a4/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/putri/Phoebe/app/build/intermediates/exploded-aar/com.tzutalin.dlib-android-app/dlib/1.0.3/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="5d20b1abd633fed36efb76d45eaaffa41a65aa1a">
-        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.tzutalin.dlib-android-app-dlib-1.0.3_c3e3a4139a07b0e33a37d930b368dad8ef220b3e/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -351,15 +351,6 @@
         revision="24.0.3"
         sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
         <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_a78ff3e0bac1bd5633fd4e299d7aada7fa867194/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/putri/.gradle/caches/modules-2/files-2.1/com.jakewharton.hugo/hugo-annotations/1.2.1/b01150795c5cdca1eb7e501bf00f105ff0e31501/hugo-annotations-1.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b01150795c5cdca1eb7e501bf00f105ff0e31501">
-        <dex dex="/Users/putri/Phoebe/app/build/intermediates/transforms/dex/debug/folders/1000/10/hugo-annotations-1.2.1_32b86939e2afd0f759fa10f38068fb78b5e3e9ed/classes.dex" />
     </item>
     <item
         is-multidex="true"

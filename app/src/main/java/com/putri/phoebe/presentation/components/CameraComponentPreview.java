@@ -172,11 +172,12 @@ public class CameraComponentPreview extends ViewGroup {
 
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-            isSurfaceAvailable = false;
+
         }
 
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
+            isSurfaceAvailable = false;
         }
     }
 }

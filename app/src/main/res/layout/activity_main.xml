@@ -21,22 +21,48 @@
 
         </com.putri.phoebe.presentation.components.CameraComponentPreview>
 
+        <TextView
+            android:id="@+id/tvTakePicture"
+            style="@style/FitWidth"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:textSize="16sp"
+            android:alpha="0.5"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@android:color/white"
+            android:text="Hold to take picture"/>
+
         <LinearLayout
             android:id="@+id/button_layout"
-            style="@style/WrapContent"
+            style="@style/FitWidth"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
+            android:gravity="center"
+            android:background="@color/colorPrimaryDark"
+            android:alpha="0.5"
+            android:weightSum="1"
             android:orientation="horizontal">
 
-            <Button
+            <ImageView
                 android:id="@+id/btn_pick_an_image"
                 style="@style/WrapContent"
-                android:text="@string/pick_an_image" />
+                android:layout_weight="0.49"
+                android:padding="@dimen/margin_medium"
+                android:src="@drawable/ic_photo_size_select_actual" />
 
-            <Button
+            <View
+                android:layout_width="1dp"
+                android:layout_weight="0.01"
+                android:background="@android:color/black"
+                android:alpha="0.5"
+                android:layout_height="match_parent" />
+
+            <ImageView
                 android:id="@+id/btn_open_camera"
                 style="@style/WrapContent"
-                android:text="@string/open_camera" />
+                android:layout_weight="0.49"
+                android:padding="@dimen/margin_medium"
+                android:src="@drawable/ic_party_mode" />
 
         </LinearLayout>
     </RelativeLayout>

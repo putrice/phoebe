@@ -10,24 +10,18 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -38,16 +32,15 @@ import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.Tracker;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
-import com.google.android.gms.vision.face.Landmark;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
-import com.karumi.dexter.listener.single.SnackbarOnDeniedPermissionListener;
 import com.putri.phoebe.R;
 import com.putri.phoebe.presentation.components.CameraComponentPreview;
+import com.putri.phoebe.presentation.components.FaceDecoration;
 import com.putri.phoebe.presentation.components.GraphicFaceTracker;
 import com.putri.phoebe.presentation.components.GraphicOverlay;
 import com.putri.phoebe.presentation.components.Sticker;
@@ -59,6 +52,7 @@ import java.net.URL;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
@@ -81,16 +75,16 @@ public class MainActivity extends AppCompatActivity {
 
     private PermissionListener cameraPermissionListener;
 
-    private Sticker sticker;
+    private FaceDecoration faceDecoration;
 
     @BindView(R.id.btn_pick_an_image)
-    Button btnPickAnImage;
+    ImageView btnPickAnImage;
 
     @BindView(R.id.imageView)
     ImageView imgView;
 
     @BindView(R.id.btn_open_camera)
-    Button btnOpenCamera;
+    ImageView btnOpenCamera;
 
     @BindView(R.id.preview)
     CameraComponentPreview cameraComponentPreview;
@@ -101,33 +95,49 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main)
     CoordinatorLayout rootView;
 
+    @BindView(R.id.tvTakePicture)
+    TextView tvTakePicture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        imgView.setVisibility(View.GONE);
-        cameraComponentPreview.setVisibility(View.GONE);
-
         initPermissionListeners();
+
+        Sticker sticker = new Sticker(this);
+        faceDecoration = new FaceDecoration(sticker);
+
+        openCamera();
 
         publishSubject = PublishSubject.create();
         subscription = publishSubject.subscribe(new Action1<Boolean>() {
             @Override
             public void call(Boolean aBoolean) {
-                btnPickAnImage.setText("Pick Another Image");
+
             }
         });
+    }
 
-        sticker = new Sticker(this);
+    private void showGalleryMode() {
+        imgView.setVisibility(View.VISIBLE);
+        cameraComponentPreview.setVisibility(View.GONE);
+        tvTakePicture.setVisibility(View.GONE);
+    }
+
+    private void showLiveCameraMode() {
+        imgView.setVisibility(View.GONE);
+        cameraComponentPreview.setVisibility(View.VISIBLE);
+        tvTakePicture.setVisibility(View.VISIBLE);
     }
 
     private void initPermissionListeners() {
         cameraPermissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse response) {
-                createCameraSource();
+                if(cameraSource == null) {
+                    createCameraSource(CameraSource.CAMERA_FACING_FRONT);
+                }
             }
 
             @Override
@@ -165,35 +175,52 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_open_camera)
     public void openCamera() {
-        imgView.setVisibility(View.GONE);
-        isOpenCamera = true;
+        if(!isOpenCamera) {
+            showLiveCameraMode();
+            isOpenCamera = true;
 
-        if (Dexter.isRequestOngoing()) {
-            return;
+            if (Dexter.isRequestOngoing()) {
+                return;
+            }
+            Dexter.checkPermission(cameraPermissionListener, Manifest.permission.CAMERA);
+        } else {
+            int currentFacing = cameraSource.getCameraFacing();
+            cameraSource.stop();
+
+            if(currentFacing == CameraSource.CAMERA_FACING_FRONT) {
+                createCameraSource(CameraSource.CAMERA_FACING_BACK);
+            } else {
+                createCameraSource(CameraSource.CAMERA_FACING_FRONT);
+            }
         }
-        Dexter.checkPermission(cameraPermissionListener, Manifest.permission.CAMERA);
     }
 
-    private void requestCameraPermission() {
-        PermissionListener snackbarPermissionListener =
-                SnackbarOnDeniedPermissionListener.Builder
-                        .with(rootView, "Camera access is needed to take pictures of your dog")
-                        .withOpenSettingsButton("Settings")
-                        .withCallback(new Snackbar.Callback() {
-                            @Override
-                            public void onShown(Snackbar snackbar) {
-                                // Event handler for when the given Snackbar is visible
-                            }
-                            @Override
-                            public void onDismissed(Snackbar snackbar, int event) {
-                                // Event handler for when the given Snackbar has been dismissed
-                            }
-                        })
-                        .build();
-        Dexter.checkPermission(snackbarPermissionListener, Manifest.permission.CAMERA);
+    @OnClick(R.id.btn_pick_an_image)
+    public void openGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
 
-    private void createCameraSource() {
+    @OnLongClick(R.id.preview)
+    public boolean takePicture() {
+        cameraSource.takePicture(new CameraSource.ShutterCallback() {
+            @Override
+            public void onShutter() {
+
+            }
+        }, new CameraSource.PictureCallback() {
+            @Override
+            public void onPictureTaken(byte[] bytes) {
+                cameraSource.stop();
+                Toast.makeText(getApplicationContext(), "Picture Taken", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return true;
+    }
+
+    private void createCameraSource(int facing) {
         Context context = getApplicationContext();
         FaceDetector faceDetector = new FaceDetector.Builder(context)
                 .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
@@ -207,36 +234,13 @@ public class MainActivity extends AppCompatActivity {
 
         cameraSource = new CameraSource.Builder(context, faceDetector)
                 .setRequestedPreviewSize(640, 480)
-                .setFacing(CameraSource.CAMERA_FACING_FRONT)
+                .setFacing(facing)
                 .setRequestedFps(30.0f)
                 .build();
-    }
 
-    @OnClick(R.id.btn_pick_an_image)
-    public void openGallery() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
-    }
+        graphicOverlay.setFacing(facing);
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if(isOpenCamera) {
-            startCameraSource();
-            cameraComponentPreview.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if(isOpenCamera) {
-            cameraComponentPreview.stop();
-            cameraComponentPreview.setVisibility(View.GONE);
-        }
+        startCameraSource();
     }
 
     private void startCameraSource() {
@@ -259,8 +263,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        imgView.setVisibility(View.VISIBLE);
-        cameraComponentPreview.setVisibility(View.GONE);
+        isOpenCamera = false;
+        showGalleryMode();
+
         Dexter.checkPermission(new PermissionListener() {
             @Override public void onPermissionGranted(PermissionGrantedResponse response) {
                 if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
@@ -299,46 +304,7 @@ public class MainActivity extends AppCompatActivity {
 
         Frame frame = new Frame.Builder().setBitmap(selectedImage).build();
         SparseArray<Face> faces = faceDetector.detect(frame);
-
-        for(int i=0; i < faces.size(); i++) {
-            Face thisFace = faces.valueAt(i);
-            float xPositionRightMouth = 0;
-            float yPositionRightMouth = 0;
-            float xPositionLeftMouth = 0;
-            float yPositionLeftMouth = 0;
-
-            for(Landmark landmark : thisFace.getLandmarks()) {
-                if(landmark.getType() == Landmark.LEFT_EYE || landmark.getType() == Landmark.RIGHT_EYE) {
-                    double eyeWidth = (double) (thisFace.getWidth() / 4);
-                    double eyeHeight = (double) (thisFace.getHeight() / 7.5);
-
-                    Bitmap newEyes = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.eyes), (int) Math.ceil(eyeWidth), (int) Math.ceil(eyeHeight), false);
-                    tempCanvas.drawBitmap(newEyes, landmark.getPosition().x - (float) (eyeWidth / 2), landmark.getPosition().y - (float) (eyeHeight / 1.5), null);
-                }
-
-                if(landmark.getType() == Landmark.RIGHT_MOUTH) {
-                    xPositionRightMouth = landmark.getPosition().x;
-                    yPositionRightMouth = landmark.getPosition().y;
-
-                    if(xPositionLeftMouth != 0 && xPositionRightMouth != 0) {
-                        double mouthWidth = (double) (thisFace.getWidth() / 5);
-                        double mouthHeight = (double) (thisFace.getHeight() / 15);
-
-                        float mouthCenterTop = yPositionLeftMouth - ((float) mouthHeight / 4);
-                        float mouthCenterBottom = yPositionLeftMouth + ((float) mouthHeight);
-
-                        Bitmap newMouth = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.mouth), (int) Math.ceil(mouthWidth), (int) Math.ceil(mouthHeight), false);
-                        tempCanvas.drawBitmap(newMouth, null, new RectF(xPositionRightMouth, mouthCenterTop, xPositionLeftMouth, mouthCenterBottom), null);
-                    }
-                }
-
-                if(landmark.getType() == Landmark.LEFT_MOUTH) {
-                    xPositionLeftMouth = landmark.getPosition().x;
-                    yPositionLeftMouth = landmark.getPosition().y;
-                }
-            }
-        }
-
+        faceDecoration.startDecorate(faces, tempCanvas);
         imgView.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
     }
 
@@ -367,6 +333,29 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap getSelectedImage(Intent data) {
         return BitmapFactory.decodeFile(getPicturePath(data));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(isOpenCamera) {
+            startCameraSource();
+            showLiveCameraMode();
+        } else {
+            showGalleryMode();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(isOpenCamera) {
+            cameraComponentPreview.stop();
+        } else {
+            showGalleryMode();
+        }
     }
 
     @Override

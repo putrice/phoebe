@@ -21,7 +21,6 @@ public class GraphicFaceTracker extends Tracker<Face> {
 
     @Override
     public void onNewItem(int id, Face item) {
-        faceGraphic.setId(id);
     }
 
     @Override
