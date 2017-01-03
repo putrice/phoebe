@@ -6,16 +6,30 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 
+import com.putri.phoebe.R;
+
 /**
  * Created by putri on 12/28/16.
  */
 
 public class Sticker {
 
+    public static final int HEADBAND1 = 0;
+
+    public static final int HEADBAND2 = 1;
+
+    public static final int RYUK = 2;
+
+    private int activeSticker;
+
     private Context context;
 
     public Sticker(Context context) {
         this.context = context;
+    }
+
+    public void setActiveSticker(int activeSticker) {
+        this.activeSticker = activeSticker;
     }
 
     public Bitmap getBitmap(int drawableId) {
@@ -27,5 +41,4 @@ public class Sticker {
 
         return mouth;
     }
-
 }

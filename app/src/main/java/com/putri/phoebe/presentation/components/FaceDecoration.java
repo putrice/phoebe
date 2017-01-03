@@ -35,27 +35,30 @@ public class FaceDecoration {
         float xPositionLeftMouth = 0;
         float yPositionLeftMouth = 0;
 
+        Bitmap headband = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.flower_snapchat), (int) Math.ceil(face.getWidth() * 2), (int) Math.ceil(face.getHeight()), false);
+        canvas.drawBitmap(headband, graphic.translateX(face.getPosition().x + face.getWidth()), graphic.translateY(face.getPosition().y), null);
+
         for (Landmark landmark : face.getLandmarks()) {
             if (landmark.getType() == Landmark.LEFT_EYE || landmark.getType() == Landmark.RIGHT_EYE) {
                 final double eyeWidth = (double) (face.getWidth() / 4);
                 final double eyeHeight = face.getHeight() / 7.5;
 
-                final float newX = getX(landmark.getPosition().x, landmark.getPosition().y, face.getEulerY());
-                final float newY = getY(landmark.getPosition().x, landmark.getPosition().y, face.getEulerY());
+                final float newX = landmark.getPosition().x;
+                final float newY = landmark.getPosition().y;
 
-                if(face.getEulerZ() < 1 && face.getEulerZ() >= 0) {
+//                if(face.getEulerZ() < 1 && face.getEulerZ() >= 0) {
                     final Bitmap newEyes = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.eyes), (int) Math.ceil(eyeWidth), (int) Math.ceil(eyeHeight), false);
                     if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
                         canvas.drawBitmap(newEyes, graphic.translateX(newX + (float) (eyeWidth / 4)), graphic.translateY(newY - (float) (eyeHeight / 2)), null);
                     } else {
                         canvas.drawBitmap(newEyes, graphic.translateX(newX - (float) (eyeWidth / 4)), graphic.translateY(newY - (float) (eyeHeight / 4)), null);
                     }
-                }
+//                }
             }
 
             if (landmark.getType() == Landmark.RIGHT_MOUTH) {
-                xPositionRightMouth = getX(landmark.getPosition().x, landmark.getPosition().y, face.getEulerY());
-                yPositionRightMouth = getY(landmark.getPosition().x, landmark.getPosition().y, face.getEulerY());
+                xPositionRightMouth = landmark.getPosition().x;
+                yPositionRightMouth = landmark.getPosition().y;
 
                 if (xPositionLeftMouth != 0 && xPositionRightMouth != 0) {
                     double mouthWidth = (double) (face.getWidth() / 5);
@@ -64,7 +67,7 @@ public class FaceDecoration {
                     float mouthCenterTop = yPositionLeftMouth - ((float) mouthHeight / 2);
                     float mouthCenterBottom = yPositionLeftMouth + ((float) mouthHeight / 2);
 
-                    if(face.getEulerZ() < 1 && face.getEulerZ() >= 0) {
+//                    if(face.getEulerZ() < 1 && face.getEulerZ() >= 0) {
                         Bitmap newMouth = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.mouth), (int) Math.ceil(mouthWidth), (int) Math.ceil(mouthHeight), false);
                         if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
                             canvas.drawBitmap(newMouth, null, new RectF(graphic.translateX(xPositionLeftMouth), graphic.translateY(mouthCenterTop), graphic.translateX(xPositionRightMouth), graphic.translateY(mouthCenterBottom)), null);
@@ -72,13 +75,13 @@ public class FaceDecoration {
                             mouthCenterTop = yPositionLeftMouth - ((float) mouthHeight / 4);
                             canvas.drawBitmap(newMouth, null, new RectF(graphic.translateX(xPositionRightMouth), graphic.translateY(mouthCenterTop), graphic.translateX(xPositionLeftMouth), graphic.translateY(mouthCenterBottom)), null);
                         }
-                    }
+//                    }
                 }
             }
 
             if (landmark.getType() == Landmark.LEFT_MOUTH) {
-                xPositionLeftMouth = getX(landmark.getPosition().x, landmark.getPosition().y, face.getEulerY());
-                yPositionLeftMouth = getY(landmark.getPosition().x, landmark.getPosition().y, face.getEulerY());
+                xPositionLeftMouth = landmark.getPosition().x;
+                yPositionLeftMouth = landmark.getPosition().y;
             }
         }
     }
@@ -100,6 +103,9 @@ public class FaceDecoration {
             float yPositionRightMouth = 0;
             float xPositionLeftMouth = 0;
             float yPositionLeftMouth = 0;
+
+            Bitmap headband = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.headband), (int) Math.ceil(thisFace.getWidth()), (int) Math.ceil(thisFace.getHeight() / 3), false);
+            canvas.drawBitmap(headband, thisFace.getPosition().x, thisFace.getPosition().y, null);
 
             for (Landmark landmark : thisFace.getLandmarks()) {
                 if (landmark.getType() == Landmark.LEFT_EYE || landmark.getType() == Landmark.RIGHT_EYE) {

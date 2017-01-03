@@ -33,6 +33,40 @@
             android:text="Hold to take picture"/>
 
         <LinearLayout
+            android:id="@+id/filter_layout"
+            style="@style/FitWidth"
+            android:gravity="center"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimaryDark"
+            android:alpha="0.5"
+            android:weightSum="9"
+            android:layout_above="@+id/button_layout"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/filter_headband"
+                style="@style/WrapContent"
+                android:layout_weight="3"
+                android:padding="@dimen/margin_medium"
+                android:src="@drawable/headband" />
+
+            <ImageView
+                android:id="@+id/filter_ryuk"
+                style="@style/WrapContent"
+                android:layout_weight="3"
+                android:padding="@dimen/margin_medium"
+                android:src="@drawable/eyes" />
+
+            <ImageView
+                android:id="@+id/filter_snapchat"
+                style="@style/WrapContent"
+                android:layout_weight="4"
+                android:padding="@dimen/margin_medium"
+                android:src="@drawable/flower_snapchat" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/button_layout"
             style="@style/FitWidth"
             android:layout_alignParentBottom="true"
