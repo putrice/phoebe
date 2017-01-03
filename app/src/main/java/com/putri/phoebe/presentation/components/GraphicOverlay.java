@@ -30,6 +30,8 @@ public class GraphicOverlay extends View {
 
     private Set<Graphic> graphics = new HashSet<>();
 
+    private FaceDecoration faceDecoration;
+
     public GraphicOverlay(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -53,6 +55,10 @@ public class GraphicOverlay extends View {
             graphics.remove(graphic);
         }
         postInvalidate();
+    }
+
+    public void setFaceDecoration(FaceDecoration faceDecoration) {
+        this.faceDecoration = faceDecoration;
     }
 
     public void setCameraInfo(int previewWidth, int previewHeight, int facing) {
@@ -122,6 +128,10 @@ public class GraphicOverlay extends View {
 
         public int getFacing() {
             return graphicOverlay.facing;
+        }
+
+        public FaceDecoration getFaceDecoration() {
+            return graphicOverlay.faceDecoration;
         }
     }
 }

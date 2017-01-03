@@ -21,6 +21,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
     private FaceDecoration faceDecoration;
 
+    private Sticker sticker;
+
     @BindView(R.id.btn_pick_an_image)
     ImageView btnPickAnImage;
 
@@ -98,6 +101,18 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tvTakePicture)
     TextView tvTakePicture;
 
+    @BindView(R.id.filter_layout)
+    LinearLayout filterLayout;
+
+    @BindView(R.id.filter_headband1)
+    ImageView filterHeadband1;
+
+    @BindView(R.id.filter_ryuk)
+    ImageView filterRyuk;
+
+    @BindView(R.id.filter_headband2)
+    ImageView filterHeadband2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,8 +120,10 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initPermissionListeners();
 
-        Sticker sticker = new Sticker(this);
+        //TODO need to be refactor ? masih bingung mau dipindah kemana sih tapi :(
+        sticker = new Sticker(this);
         faceDecoration = new FaceDecoration(sticker);
+        graphicOverlay.setFaceDecoration(faceDecoration);
 
         openCamera();
 
@@ -123,12 +140,14 @@ public class MainActivity extends AppCompatActivity {
         imgView.setVisibility(View.VISIBLE);
         cameraComponentPreview.setVisibility(View.GONE);
         tvTakePicture.setVisibility(View.GONE);
+        filterLayout.setVisibility(View.GONE);
     }
 
     private void showLiveCameraMode() {
         imgView.setVisibility(View.GONE);
         cameraComponentPreview.setVisibility(View.VISIBLE);
         tvTakePicture.setVisibility(View.VISIBLE);
+        filterLayout.setVisibility(View.VISIBLE);
     }
 
     private void initPermissionListeners() {
@@ -218,6 +237,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         return true;
+    }
+
+    @OnClick(R.id.filter_headband1)
+    public void onClickFilterHeadband1() {
+        faceDecoration.updateSticker(Sticker.HEADBAND1);
+    }
+
+    @OnClick(R.id.filter_headband2)
+    public void onClickFilterHeadband2() {
+        faceDecoration.updateSticker(Sticker.HEADBAND2);
+    }
+
+    @OnClick(R.id.filter_ryuk)
+    public void onClickFilterRyuk() {
+        faceDecoration.updateSticker(Sticker.RYUK);
     }
 
     private void createCameraSource(int facing) {

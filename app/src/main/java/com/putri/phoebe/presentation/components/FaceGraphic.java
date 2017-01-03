@@ -13,14 +13,8 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
 
     private volatile Face face;
 
-    private Sticker sticker;
-
-    private FaceDecoration faceDecoration;
-
     FaceGraphic(GraphicOverlay graphicOverlay) {
         super(graphicOverlay);
-        sticker = new Sticker(graphicOverlay.getContext());
-        faceDecoration = new FaceDecoration(sticker, this);
     }
 
     public void updateFace(Face face) {
@@ -35,6 +29,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             return;
         }
 
-        faceDecoration.startDecorate(face, canvas);
+        getFaceDecoration().startDecorate(face, canvas, this);
     }
 }

@@ -26,6 +26,11 @@ public class Sticker {
 
     public Sticker(Context context) {
         this.context = context;
+        this.activeSticker = HEADBAND1;
+    }
+
+    public int getActiveSticker() {
+        return activeSticker;
     }
 
     public void setActiveSticker(int activeSticker) {

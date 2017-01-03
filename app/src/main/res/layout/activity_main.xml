@@ -44,8 +44,9 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/filter_headband"
+                android:id="@+id/filter_headband1"
                 style="@style/WrapContent"
+                android:layout_width="0dp"
                 android:layout_weight="3"
                 android:padding="@dimen/margin_medium"
                 android:src="@drawable/headband" />
@@ -53,14 +54,16 @@
             <ImageView
                 android:id="@+id/filter_ryuk"
                 style="@style/WrapContent"
+                android:layout_width="0dp"
                 android:layout_weight="3"
                 android:padding="@dimen/margin_medium"
                 android:src="@drawable/eyes" />
 
             <ImageView
-                android:id="@+id/filter_snapchat"
+                android:id="@+id/filter_headband2"
                 style="@style/WrapContent"
-                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_weight="3"
                 android:padding="@dimen/margin_medium"
                 android:src="@drawable/flower_snapchat" />
 
