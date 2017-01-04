@@ -254,6 +254,11 @@ public class MainActivity extends AppCompatActivity {
         faceDecoration.updateSticker(Sticker.RYUK);
     }
 
+    @OnClick(R.id.filter_cat)
+    public void onClickFilterCat() {
+        faceDecoration.updateSticker(Sticker.CAT);
+    }
+
     private void createCameraSource(int facing) {
         Context context = getApplicationContext();
         FaceDetector faceDetector = new FaceDetector.Builder(context)

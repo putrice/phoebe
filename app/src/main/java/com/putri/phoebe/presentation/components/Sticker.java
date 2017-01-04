@@ -20,6 +20,8 @@ public class Sticker {
 
     public static final int RYUK = 2;
 
+    public static final int CAT = 3;
+
     private int activeSticker;
 
     private Context context;
