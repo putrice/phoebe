@@ -1,6 +1,5 @@
 package com.putri.phoebe.presentation.components;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
@@ -52,9 +51,21 @@ public class FaceDecoration {
         int drawableId = 0;
         int width = 0;
         int height = 0;
+        float x = 0;
+        float y = 0;
 
         width = (int) Math.ceil(face.getWidth() * 2);
         height = (int) Math.ceil(face.getHeight());
+
+        if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
+            x = width - face.getPosition().x;
+            y = face.getPosition().y;
+        } else {
+//            x = face.getPosition().y - (face.getWidth() / 2);
+//            y = face.getPosition().x - (face.getWidth() / 6);
+            x = face.getPosition().x;
+            y = face.getPosition().y;
+        }
 
         if(stickerId == Sticker.HEADBAND1) {
             drawableId = R.drawable.headband;
@@ -66,10 +77,12 @@ public class FaceDecoration {
             drawableId = R.drawable.ears;
             width = width / 2;
             height = height / 4;
+//            x = x - (x / 5);
+//            y = y - (y / 12);
         }
 
         Bitmap headband = Bitmap.createScaledBitmap(sticker.getBitmap(drawableId), width, height, false);
-        canvas.drawBitmap(headband, graphic.translateX(face.getPosition().x + face.getWidth()), graphic.translateY(face.getPosition().y), null);
+        canvas.drawBitmap(headband, graphic.translateX(x), graphic.translateY(y), null);
     }
 
     private void drawCharacterStickerOnCamera(int stickerId, Face face, Canvas canvas, GraphicOverlay.Graphic graphic) {
@@ -91,9 +104,9 @@ public class FaceDecoration {
 
                     final Bitmap newEyes = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.eyes), (int) Math.ceil(eyeWidth), (int) Math.ceil(eyeHeight), false);
                     if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
-                        canvas.drawBitmap(newEyes, graphic.translateX(newX + (float) (eyeWidth / 4)), graphic.translateY(newY - (float) (eyeHeight / 2)), null);
+                        canvas.drawBitmap(newEyes, graphic.translateX((float) (eyeWidth - newX)), graphic.translateY(newY), null);
                     } else {
-                        canvas.drawBitmap(newEyes, graphic.translateX(newX - (float) (eyeWidth / 4)), graphic.translateY(newY - (float) (eyeHeight / 4)), null);
+                        canvas.drawBitmap(newEyes, graphic.translateX(newX), graphic.translateY(newY), null);
                     }
                 }
 
@@ -128,9 +141,19 @@ public class FaceDecoration {
                 if(landmark.getType() == Landmark.NOSE_BASE) {
                     double noseWidth = (double) (face.getWidth() / 2);
                     double noseHeight = (double) (face.getHeight() / 4);
+                    float x = 0;
+                    float y = 0;
+
+                    if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
+                        x = (float) (noseWidth - landmark.getPosition().x);
+                        y = landmark.getPosition().y;
+                    } else {
+                        x = landmark.getPosition().x;
+                        y = landmark.getPosition().y;
+                    }
 
                     Bitmap nose = Bitmap.createScaledBitmap(sticker.getBitmap(R.drawable.nose), (int) Math.ceil(noseWidth), (int) Math.ceil(noseHeight), false);
-                    canvas.drawBitmap(nose, graphic.translateX((float) (landmark.getPosition().x + (noseWidth / 4))), graphic.translateY((float) (landmark.getPosition().y - (noseHeight / 2))), null);
+                    canvas.drawBitmap(nose, graphic.translateX(x), graphic.translateY(y), null);
                 }
             }
         }

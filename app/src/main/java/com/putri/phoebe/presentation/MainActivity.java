@@ -9,11 +9,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,6 +50,7 @@ import com.putri.phoebe.presentation.components.Sticker;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.net.URL;
 
 import butterknife.BindView;
@@ -275,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
                 .setRequestedPreviewSize(640, 480)
                 .setFacing(facing)
                 .setRequestedFps(30.0f)
+                .setAutoFocusEnabled(true)
                 .build();
 
         graphicOverlay.setFacing(facing);
