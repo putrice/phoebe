@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -125,7 +126,10 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO need to be refactor ? masih bingung mau dipindah kemana sih tapi :(
         sticker = new Sticker(this);
-        faceDecoration = new FaceDecoration(sticker);
+
+        View v = getWindow().findViewById(Window.ID_ANDROID_CONTENT);
+        faceDecoration = new FaceDecoration(sticker, v.getHeight(), v.getWidth());
+
         graphicOverlay.setFaceDecoration(faceDecoration);
 
         openCamera();

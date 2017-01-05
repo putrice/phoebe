@@ -16,10 +16,16 @@ import com.putri.phoebe.R;
 
 public class FaceDecoration {
 
+    private int viewHeight;
+
+    private int viewWidth;
+
     private Sticker sticker;
 
-    public FaceDecoration(Sticker sticker) {
+    public FaceDecoration(Sticker sticker, int viewHeight, int viewWidth) {
         this.sticker = sticker;
+        this.viewHeight = viewHeight;
+        this.viewWidth = viewWidth;
     }
 
     public void updateSticker(int stickerId) {
@@ -58,7 +64,7 @@ public class FaceDecoration {
         height = (int) Math.ceil(face.getHeight());
 
         if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
-            x = width - face.getPosition().x;
+            x = (face.getPosition().x - viewWidth) + face.getWidth();
             y = face.getPosition().y;
         } else {
 //            x = face.getPosition().y - (face.getWidth() / 2);
@@ -75,8 +81,7 @@ public class FaceDecoration {
             drawableId = R.drawable.hair;
         } else if(stickerId == Sticker.CAT) {
             drawableId = R.drawable.ears;
-            width = width / 2;
-            height = height / 4;
+            height = height / 2;
 //            x = x - (x / 5);
 //            y = y - (y / 12);
         }
@@ -145,7 +150,7 @@ public class FaceDecoration {
                     float y = 0;
 
                     if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
-                        x = (float) (noseWidth - landmark.getPosition().x);
+                        x = (landmark.getPosition().x - viewWidth) + (face.getWidth() / 8);
                         y = landmark.getPosition().y;
                     } else {
                         x = landmark.getPosition().x;
