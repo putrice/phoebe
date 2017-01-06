@@ -22,6 +22,8 @@ public class FaceDecoration {
 
     private Sticker sticker;
 
+    private int orientation;
+
     public FaceDecoration(Sticker sticker, int viewHeight, int viewWidth) {
         this.sticker = sticker;
         this.viewHeight = viewHeight;
@@ -30,6 +32,10 @@ public class FaceDecoration {
 
     public void updateSticker(int stickerId) {
         sticker.setActiveSticker(stickerId);
+    }
+
+    public void updateOrientation(int orientation) {
+        this.orientation = orientation;
     }
 
     public void startDecorate(Face face, final Canvas canvas, GraphicOverlay.Graphic graphic) {
@@ -64,11 +70,28 @@ public class FaceDecoration {
         height = (int) Math.ceil(face.getHeight());
 
         if (graphic.getFacing() == CameraSource.CAMERA_FACING_FRONT) {
-            x = (face.getPosition().x - viewWidth) + face.getWidth();
-            y = face.getPosition().y;
+            switch (orientation) {
+                case 0:
+                    x = (face.getPosition().x - viewWidth) + face.getWidth();
+                    y = face.getPosition().y;
+                    break;
+
+                case 1:
+                    x = face.getPosition().y;
+                    y = face.getPosition().x;
+                    break;
+
+                case 2:
+                    x = face.getPosition().x;
+                    y = (face.getPosition().y - viewHeight) + face.getHeight();
+                    break;
+
+                case 3:
+                    x = (face.getPosition().y - viewWidth) + face.getWidth();
+                    y = (face.getPosition().x - viewHeight) + face.getHeight();
+                    break;
+            }
         } else {
-//            x = face.getPosition().y - (face.getWidth() / 2);
-//            y = face.getPosition().x - (face.getWidth() / 6);
             x = face.getPosition().x;
             y = face.getPosition().y;
         }
@@ -82,8 +105,6 @@ public class FaceDecoration {
         } else if(stickerId == Sticker.CAT) {
             drawableId = R.drawable.ears;
             height = height / 2;
-//            x = x - (x / 5);
-//            y = y - (y / 12);
         }
 
         Bitmap headband = Bitmap.createScaledBitmap(sticker.getBitmap(drawableId), width, height, false);

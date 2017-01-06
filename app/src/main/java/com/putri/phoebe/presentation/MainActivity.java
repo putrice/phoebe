@@ -6,12 +6,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -21,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -78,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isOpenCamera;
 
+    private OrientationEventListener orientationEventListener;
+
     private PermissionListener cameraPermissionListener;
 
     private FaceDecoration faceDecoration;
@@ -122,7 +127,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         initPermissionListeners();
+        initOrientationChangeListener();
 
         //TODO need to be refactor ? masih bingung mau dipindah kemana sih tapi :(
         sticker = new Sticker(this);
@@ -197,6 +204,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+    }
+
+    private void initOrientationChangeListener() {
+        orientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
+            @Override
+            public void onOrientationChanged(int orientation) {
+                int orientCase = 0;
+
+                if ((orientation >= 0 && orientation <= 30 ) || (orientation >= 330 && orientation <= 360)) {
+                    orientCase = 0;
+                } else if (orientation >= 60 && orientation <= 120) {
+                    orientCase = 1;
+                } else if (orientation >= 150 && orientation <= 210) {
+                    orientCase = 2;
+                } else if (orientation >= 240 && orientation <= 300) {
+                    orientCase = 3;
+                }
+                Log.d("Orientation", orientCase + "");
+                faceDecoration.updateOrientation(orientCase);
+            }
+        };
+
+        if (orientationEventListener.canDetectOrientation() == true) {
+            orientationEventListener.enable();
+        }
     }
 
     @OnClick(R.id.btn_open_camera)
@@ -411,6 +443,10 @@ public class MainActivity extends AppCompatActivity {
         subscription.unsubscribe();
         if(cameraSource != null) {
             cameraSource.release();
+        }
+
+        if(orientationEventListener != null) {
+            orientationEventListener.disable();
         }
     }
 
