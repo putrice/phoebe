@@ -1,7 +1,6 @@
 package com.putri.phoebe.presentation.components;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 
 import com.google.android.gms.vision.face.Face;
 

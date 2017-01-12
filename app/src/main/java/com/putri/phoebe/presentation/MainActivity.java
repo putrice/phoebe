@@ -65,13 +65,11 @@ import rx.Subscription;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private static final int RESULT_LOAD_IMG = 1;
 
     private static final int RC_HANDLE_GMS = 9001;
-
-    private static final int RC_HANDLE_CAMERA_PERM = 2;
 
     private CameraSource cameraSource;
 
@@ -123,11 +121,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView filterHeadband2;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-
+    public void setup() {
         initPermissionListeners();
         initOrientationChangeListener();
 
@@ -148,6 +142,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_main;
     }
 
     private void showGalleryMode() {

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/MatchParent">
+
+    <ImageView
+        android:id="@+id/iv_result"
+        style="@style/MatchParent" />
+
+    <Button
+        android:id="@+id/btn_share"
+        style="@style/WrapContent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:text="Share"/>
+
+</RelativeLayout>
