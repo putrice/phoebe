@@ -52,6 +52,7 @@ import com.putri.phoebe.presentation.components.GraphicFaceTracker;
 import com.putri.phoebe.presentation.components.GraphicOverlay;
 import com.putri.phoebe.presentation.components.Sticker;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -269,12 +270,22 @@ public class MainActivity extends BaseActivity {
         }, new CameraSource.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] bytes) {
-                cameraSource.stop();
-                Toast.makeText(getApplicationContext(), "Picture Taken", Toast.LENGTH_LONG).show();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                openResultPage(bitmap);
             }
         });
 
-        return true;
+        return false;
+    }
+
+    private void openResultPage(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+        intent.putExtra("result", byteArray);
+        startActivity(intent);
     }
 
     @OnClick(R.id.filter_headband1)
