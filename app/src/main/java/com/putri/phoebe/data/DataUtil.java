@@ -11,6 +11,8 @@ public class DataUtil {
 
     private static final String PREF_NAME = "PhoebeSharedPref";
 
+    private static final String IMAGES = "images";
+
     private Context context;
 
     private SharedPreferences sharedPreferences;
@@ -27,11 +29,16 @@ public class DataUtil {
     }
 
     public void savePicture(String encodedImage) {
-        editor.putString("images", encodedImage);
+        editor.putString(IMAGES, encodedImage);
         editor.commit();
     }
 
     public String getPicture() {
-//        return sharedPreferences.getString("images");
+        return sharedPreferences.getString(IMAGES, null);
+    }
+
+    public void clearPicture() {
+        editor.remove(IMAGES);
+        editor.commit();
     }
 }
