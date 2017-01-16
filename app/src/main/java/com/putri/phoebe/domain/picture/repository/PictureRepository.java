@@ -10,4 +10,6 @@ public interface PictureRepository {
 
     Observable<Boolean> savePicture(String encodedImages);
 
+    Observable<String> getPicture();
+
 }

@@ -41,4 +41,18 @@ public class PictureEntityLocalRepository implements PictureRepository {
 
         return Observable.just(result);
     }
+
+    @Override
+    public Observable<String> getPicture() {
+        String encodedImage;
+        try {
+            DataUtil dataUtil = new DataUtil(context);
+            dataUtil.init();
+            encodedImage = dataUtil.getPicture();
+        } catch (Exception e) {
+            encodedImage = null;
+        }
+
+        return Observable.just(encodedImage);
+    }
 }

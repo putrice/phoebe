@@ -1,6 +1,6 @@
 package com.putri.phoebe.presentation.internal.modules;
 
-import com.putri.phoebe.presentation.BaseActivity;
+import com.putri.phoebe.presentation.base.BaseActivity;
 import com.putri.phoebe.presentation.internal.PerActivity;
 
 import dagger.Module;

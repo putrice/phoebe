@@ -1,4 +1,4 @@
-package com.putri.phoebe.presentation;
+package com.putri.phoebe.presentation.home.view;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -6,21 +6,17 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.OrientationEventListener;
@@ -46,47 +42,37 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.putri.phoebe.R;
+import com.putri.phoebe.presentation.home.HomeContract;
+import com.putri.phoebe.presentation.home.presenter.HomePresenter;
+import com.putri.phoebe.presentation.internal.components.DaggerPictureComponent;
+import com.putri.phoebe.presentation.internal.components.PictureComponent;
+import com.putri.phoebe.presentation.internal.modules.PictureModule;
+import com.putri.phoebe.presentation.result.view.ResultActivity;
+import com.putri.phoebe.presentation.base.BaseActivity;
 import com.putri.phoebe.presentation.components.CameraComponentPreview;
 import com.putri.phoebe.presentation.components.FaceDecoration;
 import com.putri.phoebe.presentation.components.GraphicFaceTracker;
 import com.putri.phoebe.presentation.components.GraphicOverlay;
 import com.putri.phoebe.presentation.components.Sticker;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.net.URL;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 
-public class MainActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     private static final int RESULT_LOAD_IMG = 1;
 
     private static final int RC_HANDLE_GMS = 9001;
-
-    private CameraSource cameraSource;
-
-    private Subscription subscription;
-
-    private PublishSubject<Boolean> publishSubject;
-
-    private boolean isOpenCamera;
-
-    private OrientationEventListener orientationEventListener;
-
-    private PermissionListener cameraPermissionListener;
-
-    private FaceDecoration faceDecoration;
-
-    private Sticker sticker;
 
     @BindView(R.id.btn_pick_an_image)
     ImageView btnPickAnImage;
@@ -121,10 +107,33 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.filter_headband2)
     ImageView filterHeadband2;
 
+    @Inject
+    HomePresenter homePresenter;
+
+    private CameraSource cameraSource;
+
+    private Subscription subscription;
+
+    private PublishSubject<Boolean> publishSubject;
+
+    private boolean isOpenCamera;
+
+    private OrientationEventListener orientationEventListener;
+
+    private PermissionListener cameraPermissionListener;
+
+    private FaceDecoration faceDecoration;
+
+    private Sticker sticker;
+
+    private PictureComponent pictureComponent;
+
     @Override
     public void setup() {
         initPermissionListeners();
         initOrientationChangeListener();
+        initInjector();
+        homePresenter.setView(this);
 
         //TODO need to be refactor ? masih bingung mau dipindah kemana sih tapi :(
         sticker = new Sticker(this);
@@ -148,6 +157,17 @@ public class MainActivity extends BaseActivity {
     @Override
     public int getLayout() {
         return R.layout.activity_main;
+    }
+
+    private void initInjector() {
+        if (pictureComponent == null) {
+            pictureComponent = DaggerPictureComponent.builder()
+                    .applicationComponent(getApplicationComponent())
+                    .activityModule(getActivityModule())
+                    .pictureModule(new PictureModule())
+                    .build();
+        }
+        pictureComponent.inject(this);
     }
 
     private void showGalleryMode() {
@@ -181,7 +201,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onPermissionRationaleShouldBeShown(PermissionRequest permission, final PermissionToken token) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    new AlertDialog.Builder(MainActivity.this).setTitle("")
+                    new AlertDialog.Builder(HomeActivity.this).setTitle("")
                             .setMessage("Camera access is needed to take pictures of you.")
                             .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                                 @Override public void onClick(DialogInterface dialog, int which) {
@@ -221,7 +241,6 @@ public class MainActivity extends BaseActivity {
                 } else if (orientation >= 240 && orientation <= 300) {
                     orientCase = 3;
                 }
-                Log.d("Orientation", orientCase + "");
                 faceDecoration.updateOrientation(orientCase);
             }
         };
@@ -270,21 +289,27 @@ public class MainActivity extends BaseActivity {
         }, new CameraSource.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                openResultPage(bitmap);
+                String encodeImage = Base64.encodeToString(bytes, 0);
+                homePresenter.savePicture(encodeImage);
             }
         });
 
         return false;
     }
 
-    private void openResultPage(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
 
-        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-        intent.putExtra("result", byteArray);
+    @Override
+    public void showSavePictureSuccess() {
+        openResultPage();
+    }
+
+    @Override
+    public void showSavePictureFailed() {
+        Toast.makeText(getApplicationContext(), "Save Picture Failed", Toast.LENGTH_LONG).show();
+    }
+
+    private void openResultPage() {
+        Intent intent = new Intent(HomeActivity.this, ResultActivity.class);
         startActivity(intent);
     }
 

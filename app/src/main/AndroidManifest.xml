@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:name=".PhoebeApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.MainActivity">
+        <activity android:name=".presentation.home.view.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.ResultActivity" />
+        <activity android:name=".presentation.result.view.ResultActivity" />
 
     </application>
 

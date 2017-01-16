@@ -25,4 +25,9 @@ public class PictureEntityRepository implements PictureRepository {
     public Observable<Boolean> savePicture(String encodedImages) {
         return pictureEntityLocalRepository.savePicture(encodedImages);
     }
+
+    @Override
+    public Observable<String> getPicture() {
+        return pictureEntityLocalRepository.getPicture();
+    }
 }

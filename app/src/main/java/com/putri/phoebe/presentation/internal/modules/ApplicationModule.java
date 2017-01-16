@@ -3,8 +3,11 @@ package com.putri.phoebe.presentation.internal.modules;
 import android.app.Application;
 import android.content.Context;
 
+import com.putri.phoebe.data.picture.repository.PictureEntityRepository;
 import com.putri.phoebe.domain.picture.repository.PictureRepository;
 import com.putri.phoebe.presentation.internal.PerActivity;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,14 +25,14 @@ public class ApplicationModule {
     }
 
     @Provides
-    @PerActivity
+    @Singleton
     Context getApplicationContext() {
         return application;
     }
 
     @Provides
-    @PerActivity
-    PictureRepository providePictureRepository(PictureRepository pictureRepository) {
+    @Singleton
+    PictureRepository providePictureRepository(PictureEntityRepository pictureRepository) {
         return pictureRepository;
     }
 
