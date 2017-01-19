@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.OrientationEventListener;
@@ -55,6 +57,7 @@ import com.putri.phoebe.presentation.components.GraphicFaceTracker;
 import com.putri.phoebe.presentation.components.GraphicOverlay;
 import com.putri.phoebe.presentation.components.Sticker;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -267,6 +270,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
             if(currentFacing == CameraSource.CAMERA_FACING_FRONT) {
                 createCameraSource(CameraSource.CAMERA_FACING_BACK);
             } else {
+
                 createCameraSource(CameraSource.CAMERA_FACING_FRONT);
             }
         }
@@ -289,7 +293,26 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         }, new CameraSource.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] bytes) {
-                String encodeImage = Base64.encodeToString(bytes, 0);
+                cameraSource.stop();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+                view.measure(displayMetrics.widthPixels, displayMetrics.heightPixels);
+                view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
+                view.buildDrawingCache();
+                Bitmap bitmapOverlay = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+
+                Canvas canvas = new Canvas(bitmap);
+                view.draw(canvas);
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmapOverlay.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+                String encodeImage = Base64.encodeToString(stream.toByteArray(), 0);
                 homePresenter.savePicture(encodeImage);
             }
         });
